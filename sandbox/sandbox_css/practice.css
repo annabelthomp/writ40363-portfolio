@@ -1,0 +1,40 @@
+
+
+* {
+    border: 1px solid red;
+}
+
+header {
+
+    display: flex;  
+    flex-direction: row;
+    gap: 2rem;
+    height: 70vh;
+
+    background-color: rgb(232, 242, 168); 
+
+}
+
+.header_text {
+
+    background-color: rgb(113, 113, 233);
+     height:  50vh;    
+     width: 45%;
+}
+
+.header_pic {
+
+    background-color: rgb(240, 144, 240);
+    height: 50vh; 
+    width: 45%;
+
+}
+h1 {
+    color: #ae6fe2;
+    background-color: rgb(170, 240, 240);
+}
+
+h2 {
+    color: #4d1979; 
+    background-color:rgb(199, 244, 244)
+}
