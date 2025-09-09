@@ -1,40 +1,80 @@
 
 
+/* The next lines override the browsers margin and padding */
 * {
-    border: 1px solid red;
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0; 
 }
 
-header {
+body {
+    font-family: system-ui, -apple-system, sans serif;
+
+    line-height: 1.6;
+
+    color: #333;
+}
+
+nav {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e9ecef;  
+} 
+
+
+
+header { 
 
     display: flex;  
-    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
     gap: 2rem;
-    height: 70vh;
-
-    background-color: rgb(237, 246, 182); 
+    height: 60vh; 
+    background-color: #f8f9fa;
 
 }
 
 .header_text {
 
-    background-color: rgb(113, 113, 233);
-     height:  50vh;    
-     width: 45%;
+    background-color: cadetblue;
+    flex: 1;
+    padding: 2rem; 
+
 }
 
 .header_pic {
-
-    background-color: rgb(240, 144, 240);
-    height: 50vh; 
-    width: 45%;
+flex: 1;
+background-color: #e9ecef;
+min-height: 300px;
+border-radius: 8px;
+display: flex; 
+align-items: center; 
+justify-content: center;
+color: #6c757d; 
 
 }
+
+
+main{
+max-width: 100ch;
+margin: 0 auto;
+padding: 5%; 
+}
+
+section{
+margin-bottom: 2rem; 
+}
+
+p + p {
+    margin-top:1rem;
+}
+
 h1 {
-    color: #ae6fe2;
-    background-color: rgb(170, 240, 240);
+    color: #0a5441;
+    background-color: rgb(182, 217, 218);
 }
 
 h2 {
-    color: #4d1979; 
-    background-color:rgb(199, 244, 244)
+    color: #0a4e34; 
+    background-color:rgb(199, 228, 228)
 }
