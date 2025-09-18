@@ -1,3 +1,38 @@
+/* Consistent container behavior for all major sections */
+header,
+main,
+footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Main element gets additional grid layout */
+main {
+  display: grid;
+  gap: 6rem;
+  padding: 2rem;
+}
+
+/* Consistent section headers */
+section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
 
 
 * {
@@ -63,7 +98,7 @@ outline-offset: 2px;
 }
 
 .nav-links a:hover {
-  color: #28a745;
+  color: #3559ac;
 }
             
 header { 
@@ -79,7 +114,7 @@ header {
 
 .header_text {
 
-    background-color: cadetblue;
+    background-color: rgb(157, 208, 210);
     flex: 1;
     padding: 2rem; 
 
@@ -107,47 +142,65 @@ color: #6c757d;
 
 }
 
+main {
+  display: grid;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
 
-main{
-max-width: 65ch;
-margin: 0 auto;
-padding: 5%; }
-
+/* Responsive container padding */
+@media (min-width: 768px) {
+  main {
+    padding: 2rem;
+  }
+}
 .about-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding: 3rem 0;
-    align-items: center;}
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  align-items: center;
+}
 
-.about-image{
-    flex:1;
-    min-width:250px;
-    text-align: center;}
+/* On larger screens, create a 2-column layout */
+@media (min-width: 768px) {
+  .about-section {
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+  }
+}
+
+.about-image {
+  justify-self: center;
+}
 
 .about-image img {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    border-radius:8px;}
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+}
 
 .about-text{
     flex:2;
     min-width:250px;}
 
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
+
+  .skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+  margin-top: 2rem;
 }
 
 .skill-card {
-  flex: 1;
-  min-width: 200px;
   padding: 1.5rem;
   background: #f8f9fa;
   border-radius: 8px;
   text-align: center;
+  border: 1px solid #e9ecef;
 }
 
 .skill-card h3 {
@@ -160,9 +213,17 @@ margin-bottom: 2rem;
 }
 
 .projects-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* On tablets and up, show 2 columns */
+@media (min-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .project-card {
@@ -171,15 +232,17 @@ margin-bottom: 2rem;
   border: 1px solid #e9ecef;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .project-card h3 {
   color: #2c3e50;
   margin-bottom: 1rem;
-}
-
-.project-card p {
-  margin-bottom: 0.5rem;
 }
 
 p + p {
@@ -194,12 +257,40 @@ h1 {
     line-height: 1 rem;
 }
 
-h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #4a5568;
-    margin-bottom: 0.8rem;
-    line-height: 1.4rem;
+/* Consistent container behavior for all major sections */
+header,
+main,
+footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Main element gets additional grid layout */
+main {
+  display: grid;
+  gap: 6rem;
+  padding: 2rem;
+}
+
+/* Consistent section headers */
+section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
 }
 
 h3 {
@@ -216,41 +307,46 @@ p{
     color: #555; 
 }
 
+/* Mobile-first responsive adjustments */
 
-/* Main container for all sections */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1rem;
+/* Small phones (320px and up) */
+.skills-container {
+  grid-template-columns: 1fr;
 }
 
-/* Responsive container padding */
-@media (min-width: 768px) {
-  .container {
-    padding: 0 2rem;
+/* Large phones and small tablets (480px and up) */
+@media (min-width: 480px) {
+  .skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 
-/* Consistent section spacing */
-section {
-  padding: 3rem 0;
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+  .skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-/* Section headings */
-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #2c3e50;
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .skills-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+} 
+
+/* Mobile styles (default) */
+main {
+  padding: 2rem 1rem;
 }
 
-/* Add some visual interest to section headings */
-section h2::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #28a745;
-  margin: 1rem auto 0;
-  border-radius: 2px;
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  main {
+    padding: 2rem;
+  }
 }
