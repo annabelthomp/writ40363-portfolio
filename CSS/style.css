@@ -1,4 +1,4 @@
-/* Consistent container behavior for all major sections */
+/* === Global Resets & Base Styles === */
 header,
 main,
 footer {
@@ -6,20 +6,11 @@ footer {
   margin: 0 auto;
   padding: 0 2rem;
 }
-
 /* Main element gets additional grid layout */
-main {
-  display: grid;
-  gap: 6rem;
-  padding: 2rem;
-}
-
-/* Consistent section headers */
-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  position: relative;
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0; 
 }
 
 section h2::after {
