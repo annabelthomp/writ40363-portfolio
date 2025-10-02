@@ -127,6 +127,7 @@ outline-offset: 2px;
 header { 
 
     display: flex;  
+    /* flex-direction: column; */
     align-items: center;
     padding: 2rem;
     gap: 2rem;
@@ -137,7 +138,7 @@ header {
 
 .header_text {
 
-    background-color: rgb(157, 208, 210);
+    /* background-color: rgb(157, 208, 210); */
     flex: 1;
     padding: 2rem; 
 
@@ -145,13 +146,13 @@ header {
 
 .header_pic {
 flex: 1;
-background-color: #e9ecef;
+/* background-color: #e9ecef; */
 min-height: 300px;
 border-radius: 8px;
 display: flex; 
 align-items: center; 
 justify-content: center;
-color: #6c757d; 
+/* color: #6c757d;  */
 
 }
 
