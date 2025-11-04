@@ -1,0 +1,7 @@
+I feel fairly confident about HTMLs so far until a few days ago. The first week I felt very confident, however when I missed due to illness, I feel as though I fell behind. Setting up the format and inputting texts/ checking if theyre working is going very well. What feels challenging is now the new programs and creating new folders and such. 
+So far with Git and GitHub, it is pretty straightforward but a little complicating. I haven't done much work with it yet however I feel as though it will be easy to understand once going over it with you. 
+I approached solving problems by doing a google search or looking at your instructions more clearly. This hasn't changed much since week 1 however week 1 was much simpler.
+I am not sure about the transition from makign web pages to developing professionally with semantic HTML as I was not here for this conversation, but it sounds enticing and like a project I will find interesting. 
+This week has been more tough since being under the weather, I am hoping I will be able to catch up quickly and understand the material I missed. I fully understand everything from week 1 and hope to learn the rest. 
+I am excited to learn more about the web design and how it will all look together as far as fonts, styles, etc. I am nervous about using more porgrams as theyre sometimes tricky.
+Whats most helpful for me is hands on learning, online resources, and discussing with classmates. I think once I meet with you to go over what I missed it will be easier but I think office hours will be very important for me. 
