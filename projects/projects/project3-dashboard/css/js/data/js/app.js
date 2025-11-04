@@ -48,6 +48,10 @@ function displayWeather(weather) {
                 <strong>${weather.windSpeed} mph</strong>
             </div>
         </div>
+        <div class="weather-detail">
+    <span>🌡️ Feels Like</span>
+    <strong>${weather.feelsLike}°F</strong>
+    </div>
     `;
 
     console.log('✅ Weather displayed successfully!');
