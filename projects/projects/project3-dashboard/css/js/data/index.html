@@ -33,5 +33,19 @@
     <!-- Quote will appear here -->
   </div>
   <button id="new-quote-btn" class="btn-primary">New Quote</button>
-</section>
 
+  <script>
+    // Set up "New Quote" button
+    function setupQuotesButton() {
+      const newQuoteBtn = document.getElementById('new-quote-btn');
+
+      newQuoteBtn.addEventListener('click', () => {
+        console.log('New quote button clicked!');
+        displayRandomQuote();
+      });
+    }
+
+    // Call setupQuotesButton after DOM is loaded
+    setupQuotesButton();
+  </script>
+</section>

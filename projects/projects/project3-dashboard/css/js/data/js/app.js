@@ -151,3 +151,16 @@ function setupQuotesButton() {
 
 // Call setupQuotesButton after DOM is loaded
 setupQuotesButton();
+
+// Set up "New Quote" button
+function setupQuotesButton() {
+  const newQuoteBtn = document.getElementById('new-quote-btn');
+
+  newQuoteBtn.addEventListener('click', () => {
+    console.log('New quote button clicked!');
+    displayRandomQuote();
+  });
+}
+
+// Call setupQuotesButton after DOM is loaded
+setupQuotesButton();
