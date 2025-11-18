@@ -6,6 +6,7 @@ console.log('🚀 Event Countdown Timer initialized');
 // Configuration
 const CONFIG = {
     STORAGE_KEY: 'countdownEvents',
+    THEME_KEY: 'countdownTheme',
     UPDATE_INTERVAL: 1000, // Update every second
     NOTIFICATION_ADVANCE: 60000 // Notify 1 minute before
 };
@@ -25,10 +26,12 @@ const submitBtn = document.getElementById('submitBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const eventsContainer = document.getElementById('eventsContainer');
 const notificationBtn = document.getElementById('notificationBtn');
+const themeToggle = document.getElementById('themeToggle');
 
 // Initialize App
 function init() {
     console.log('📋 Initializing application...');
+    loadTheme();
     loadEvents();
     setupEventListeners();
     checkNotificationPermission();
@@ -41,6 +44,40 @@ function setupEventListeners() {
     eventForm.addEventListener('submit', handleFormSubmit);
     cancelBtn.addEventListener('click', handleCancelEdit);
     notificationBtn.addEventListener('click', requestNotificationPermission);
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+// Theme Management
+function loadTheme() {
+    try {
+        const savedTheme = localStorage.getItem(CONFIG.THEME_KEY);
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            updateThemeIcon(true);
+        }
+        console.log(`🎨 Loaded theme: ${savedTheme || 'light'}`);
+    } catch (error) {
+        console.error('❌ Error loading theme from localStorage:', error);
+    }
+}
+
+function toggleTheme() {
+    const isDarkMode = document.body.classList.toggle('dark-mode');
+    
+    try {
+        localStorage.setItem(CONFIG.THEME_KEY, isDarkMode ? 'dark' : 'light');
+        console.log(`🎨 Theme switched to: ${isDarkMode ? 'dark' : 'light'}`);
+    } catch (error) {
+        console.error('❌ Error saving theme to localStorage:', error);
+    }
+    
+    updateThemeIcon(isDarkMode);
+}
+
+function updateThemeIcon(isDarkMode) {
+    const icon = themeToggle.querySelector('.theme-icon');
+    icon.textContent = isDarkMode ? '☀️' : '🌙';
+    themeToggle.setAttribute('aria-label', isDarkMode ? 'Switch to light mode' : 'Switch to dark mode');
 }
 
 // Load Events from localStorage
