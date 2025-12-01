@@ -41,7 +41,7 @@ Individual course projects are preserved in the `projects/` directory:
 
 ## Contact
 
-- **GitHub:** [yourusername](https://github.com/annabelthomp)
+- **GitHub:** (https://github.com/annabelthomp)
 - **Email:** agaskinthompson@icloud.com
 
 ---
