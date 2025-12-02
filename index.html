@@ -124,20 +124,20 @@
                   <img src="images/Thompson Design2.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
             </div>
         </article>
-        
+
         <article class="project-card">
             <div class="project-content">
-                <h3>Rare Beauty News Release </h3>
-                <p>For this writing assignment, I was instructed to write a news release for a company as if it were happening in the real world. Through the use of proper AP style, correct formatting, and spelling, I was able to create a compelling piece that draws attention to this brand.</p>
-                <p><strong>Skills used:</strong> Research, AP Style </p>
-                
+                <h3>USPS National Campaign</h3>
+                <p>I contributed to the development of a national strategic communication campaign aimed at repositioning USPS as a creative, results-driven partner for small businesses. My responsibilities included conducting research on USPS to inform our strategic direction and creating engaging reels to support the campaign's digital presence. I also designed and refined the Canva slide deck, ensuring that the campaign's insight, objectives, and recommendations were presented clearly and professionally.</p>
+                <p><strong>Skills used:</strong> Presentation Skills, Research, Content Creation, Canva</p>
+            
                 <!-- PDF Viewer -->
                 <div class="pdf-viewer">
-                    <iframe id="pdf-frame" src="documents/Thompson-News-Release.pdf#page=1" type="application/pdf"></iframe>
+                    <iframe id="pdf-frame-usps" src="documents/USPS-National-Campaign.pdf#page=1" type="application/pdf"></iframe>
                     <div class="pdf-controls">
-                        <button onclick="previousPage()" class="pdf-btn" id="prev-btn">← Previous</button>
-                        <span id="page-info">Page <span id="current-page">1</span> of 2</span>
-                        <button onclick="nextPage()" class="pdf-btn" id="next-btn">Next →</button>
+                        <button onclick="previousPageUSPS()" class="pdf-btn" id="prev-btn-usps">← Previous</button>
+                        <span id="page-info-usps">Page <span id="current-page-usps">1</span> of 8</span>
+                        <button onclick="nextPageUSPS()" class="pdf-btn" id="next-btn-usps">Next →</button>
                     </div>
                 </div>
             </div>
@@ -213,35 +213,6 @@ function closeLightbox() {
     document.body.style.overflow = 'auto';
 }
 
-// PDF Navigation
-let currentPage = 1;
-const totalPages = 2;
-
-function nextPage() {
-    if (currentPage < totalPages) {
-        currentPage++;
-        updatePDF();
-    }
-}
-
-function previousPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        updatePDF();
-    }
-}
-
-function updatePDF() {
-    const iframe = document.getElementById('pdf-frame');
-    const pdfPath = iframe.src.split('#')[0];
-    iframe.src = pdfPath + '#page=' + currentPage;
-    document.getElementById('current-page').textContent = currentPage;
-    
-    // Update button states
-    document.getElementById('prev-btn').disabled = currentPage === 1;
-    document.getElementById('next-btn').disabled = currentPage === totalPages;
-}
-
 // PDF Navigation for CASA Article
 let currentPageCASA = 1;
 const totalPagesCASA = 3;
@@ -271,10 +242,39 @@ function updatePDFCASA() {
     document.getElementById('next-btn-casa').disabled = currentPageCASA === totalPagesCASA;
 }
 
+// PDF Navigation for USPS Campaign
+let currentPageUSPS = 1;
+const totalPagesUSPS = 8;
+
+function nextPageUSPS() {
+    if (currentPageUSPS < totalPagesUSPS) {
+        currentPageUSPS++;
+        updatePDFUSPS();
+    }
+}
+
+function previousPageUSPS() {
+    if (currentPageUSPS > 1) {
+        currentPageUSPS--;
+        updatePDFUSPS();
+    }
+}
+
+function updatePDFUSPS() {
+    const iframe = document.getElementById('pdf-frame-usps');
+    const pdfPath = iframe.src.split('#')[0];
+    iframe.src = pdfPath + '#page=' + currentPageUSPS;
+    document.getElementById('current-page-usps').textContent = currentPageUSPS;
+    
+    // Update button states
+    document.getElementById('prev-btn-usps').disabled = currentPageUSPS === 1;
+    document.getElementById('next-btn-usps').disabled = currentPageUSPS === totalPagesUSPS;
+}
+
 // Initialize button states on page load
 window.addEventListener('load', function() {
-    updatePDF();
     updatePDFCASA();
+    updatePDFUSPS();
 });
 </script>
 </body>
