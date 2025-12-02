@@ -34,7 +34,7 @@
         </div>
         
          <div class="header_pic">
-            <img src="images/seniorheadshot.JPG" alt="Annabel Thompson professional headshot"/> 
+            <img src="images/ThompsonComposite.jpg" alt="Annabel Thompson professional headshot"/> 
          </div>
 
 
@@ -98,11 +98,11 @@
                 <h3>STCO Study Abroad Promotional Material </h3>
                 <p>This project includes the creation of a promotional flyer, Instagram Ad, and Facebook Ad for TCU's Strategic Communication study abroad program in London. With the use of Adobe Photoshop, I was able to create clean and informational pieces to promote this opportunity. </p>
                 <p><strong>Skills used:</strong> Adobe InDesign and Photoshop </p>
-                <div class="project1_pic"></div>
+               <img src="images/flyer2.jpg" alt="Study Abroad Flyer" class="flyer-image" onclick="openLightbox(this)"> 
             
             </div>
         </article>
-        
+
         <article class="project-card">
             <div class="project-content">
                 <h3>STCO Clubs and Organizations Brochure</h3>
@@ -127,7 +127,16 @@
             </div>
         </article>
 
-        <article class="project-card">
+          <article class="project-card">
+            <div class="project-content">
+                <h3>Daily Tracker </h3>
+                <p>For this project, I created a web application allowing users to track the weather, their tasks, as well as providing an inspirational quote of the day. The app includes features such as user authentication, data visualization, and the ability to save their favorite quotes.</p>
+                <p><strong>Skills used:</strong> HTML, CSS, JavaScript, API Integration </p>
+                <p><a href="https://annabelthomp.github.io/project3-dashboard/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
+            </div>
+        </article>
+
+              <article class="project-card">
             <div class="project-content">
                 <h3>Local Favorites Tracker </h3>
                 <p>For this project, I created a web application allowing users to track their favorite local restaurants, shops, and more. The app includes features such as user reviews, ratings, and the ability to save favorite locations.</p>
@@ -148,5 +157,27 @@
 
     </section>
 </main>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<script>
+function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+</script>
 </body>
 </html>
