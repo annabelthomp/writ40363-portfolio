@@ -2,6 +2,51 @@
 // PROJECT 3: PERSONAL DATA DASHBOARD
 // LAB16: fetch() and JSON Basics
 // ==========================================
+// Theme Management
+function initializeTheme() {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('dashboardTheme');
+
+  if (savedTheme === 'dark') {
+    document.body.classList.add('theme-dark');
+    updateThemeIcon('dark');
+  } else {
+    updateThemeIcon('light');
+  }
+}
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('theme-dark');
+
+  // Save preference
+  localStorage.setItem('dashboardTheme', isDark ? 'dark' : 'light');
+
+  // Update icon
+  updateThemeIcon(isDark ? 'dark' : 'light');
+
+  console.log('Theme switched to:', isDark ? 'dark' : 'light');
+}
+
+function updateThemeIcon(theme) {
+  const themeIcon = document.querySelector('.theme-icon');
+
+  if (theme === 'dark') {
+    themeIcon.textContent = '☀️'; // Sun for dark mode (to switch to light)
+  } else {
+    themeIcon.textContent = '🌙'; // Moon for light mode (to switch to dark)
+  }
+}
+
+function setupThemeToggle() {
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
+}
+
+// Call these when page loads
+initializeTheme();
+setupThemeToggle();
 
 console.log('Dashboard app loaded!');
 console.log('LAB16: Learning fetch() API');
@@ -47,11 +92,30 @@ function displayWeather(weather) {
                 <span>💨 Wind Speed</span>
                 <strong>${weather.windSpeed} mph</strong>
             </div>
+            <div class="weather-detail">
+                <span>🌡️ Feels Like</span>
+                <strong>${weather.feelsLike}°F</strong>
+            </div>
         </div>
-        <div class="weather-detail">
-    <span>🌡️ Feels Like</span>
-    <strong>${weather.feelsLike}°F</strong>
-    </div>
+        ${weather.forecast ? `
+        <div class="weather-forecast">
+            <h3 class="forecast-title">3-Day Forecast</h3>
+            <div class="forecast-grid">
+                ${weather.forecast.map(day => `
+                    <div class="forecast-day">
+                        <div class="forecast-day-name">${day.day}</div>
+                        <div class="forecast-icon">${day.icon}</div>
+                        <div class="forecast-temp">
+                            <span class="temp-high">${day.high}°</span>
+                            <span class="temp-divider">/</span>
+                            <span class="temp-low">${day.low}°</span>
+                        </div>
+                        <div class="forecast-condition">${day.condition}</div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        ` : ''}
     `;
 
     console.log('✅ Weather displayed successfully!');
@@ -96,6 +160,7 @@ function loadQuotes() {
       displayQuotesError();
     });
 }
+
 // ========================================
 // TASKS WIDGET (from LAB18)
 // ========================================
@@ -237,17 +302,43 @@ function updateTaskStats(tasks) {
   const pendingTasks = totalTasks - completedTasks;
 
   if (totalTasks === 0) {
-    statsDiv.innerHTML = '';
+    statsDiv.innerHTML = `
+      <div class="stats-empty">
+        <span>📊</span>
+        <p>No tasks yet. Add some to see your progress!</p>
+      </div>
+    `;
     return;
   }
 
   const completionPercentage = Math.round((completedTasks / totalTasks) * 100);
 
   statsDiv.innerHTML = `
-    <div class="stat">Total: <strong>${totalTasks}</strong></div>
-    <div class="stat">Completed: <strong>${completedTasks}</strong></div>
-    <div class="stat">Pending: <strong>${pendingTasks}</strong></div>
-    <div class="stat">Progress: <strong>${completionPercentage}%</strong></div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-icon">📝</div>
+        <div class="stat-label">Total</div>
+        <div class="stat-value">${totalTasks}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">✅</div>
+        <div class="stat-label">Completed</div>
+        <div class="stat-value">${completedTasks}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-label">Pending</div>
+        <div class="stat-value">${pendingTasks}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">📈</div>
+        <div class="stat-label">Progress</div>
+        <div class="stat-value">${completionPercentage}%</div>
+      </div>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: ${completionPercentage}%"></div>
+    </div>
   `;
 }
 // Initialize tasks when page loads
@@ -263,7 +354,7 @@ function displayRandomQuote() {
     return;
   }
 
-  // Get random index (different from current)
+  // Get random index
   let randomIndex;
   do {
     randomIndex = Math.floor(Math.random() * allQuotes.length);
@@ -278,10 +369,35 @@ function displayRandomQuote() {
     <div class="quote-card">
       <div class="quote-text">"${quote.text}"</div>
       <div class="quote-author">— ${quote.author}</div>
+      <button class="btn-copy-quote" onclick="copyQuoteToClipboard()">📋 Copy Quote</button>
     </div>
   `;
 
   console.log('Displayed quote:', quote);
+}
+
+// Function to copy current quote to clipboard
+function copyQuoteToClipboard() {
+  const quoteText = document.querySelector('.quote-text').textContent;
+  const quoteAuthor = document.querySelector('.quote-author').textContent;
+  const textToCopy = `"${quoteText}" - ${quoteAuthor}`;
+  
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    console.log('Quote copied to clipboard!');
+    
+    // Visual feedback
+    const copyBtn = document.querySelector('.btn-copy-quote');
+    const originalText = copyBtn.textContent;
+    copyBtn.textContent = '✅ Copied!';
+    copyBtn.style.background = '#48bb78';
+    
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.background = '';
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy quote:', err);
+  });
 }
 
 // Function to show error message

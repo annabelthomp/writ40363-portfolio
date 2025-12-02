@@ -1,0 +1,32 @@
+{
+  "location": "Fort Worth, TX",
+  "temperature": 40,
+  "condition": "Sunny",
+  "icon": "☀️",
+  "humidity": 67,
+  "windSpeed": 9,
+  "feelsLike": 32,
+  "forecast": [
+    {
+      "day": "Monday",
+      "icon": "⛅",
+      "high": 44,
+      "low": 36,
+      "condition": "Partly Cloudy"
+    },
+    {
+      "day": "Tuesday",
+      "icon": "🌧️",
+      "high": 52,
+      "low": 31,
+      "condition": "Rainy"
+    },
+    {
+      "day": "Wednesday",
+      "icon": "☀️",
+      "high": 66,
+      "low": 42,
+      "condition": "Sunny"
+    }
+  ]
+}
