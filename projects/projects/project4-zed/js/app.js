@@ -16,6 +16,8 @@ let events = [];
 let editingEventId = null;
 let countdownIntervals = {};
 let notificationsEnabled = false;
+let currentCalendarMonth = new Date();
+let currentCalendarYear = new Date().getFullYear();
 
 // DOM Elements
 const eventForm = document.getElementById('eventForm');
@@ -27,6 +29,10 @@ const cancelBtn = document.getElementById('cancelBtn');
 const eventsContainer = document.getElementById('eventsContainer');
 const notificationBtn = document.getElementById('notificationBtn');
 const themeToggle = document.getElementById('themeToggle');
+const calendarElement = document.getElementById('calendar');
+const currentMonthElement = document.getElementById('currentMonth');
+const prevMonthBtn = document.getElementById('prevMonth');
+const nextMonthBtn = document.getElementById('nextMonth');
 
 // Initialize App
 function init() {
@@ -36,6 +42,7 @@ function init() {
     setupEventListeners();
     checkNotificationPermission();
     renderEvents();
+    renderCalendar();
     console.log('✅ Application ready');
 }
 
@@ -45,6 +52,8 @@ function setupEventListeners() {
     cancelBtn.addEventListener('click', handleCancelEdit);
     notificationBtn.addEventListener('click', requestNotificationPermission);
     themeToggle.addEventListener('click', toggleTheme);
+    prevMonthBtn.addEventListener('click', () => changeMonth(-1));
+    nextMonthBtn.addEventListener('click', () => changeMonth(1));
 }
 
 // Theme Management
@@ -130,6 +139,7 @@ function handleFormSubmit(e) {
     
     resetForm();
     renderEvents();
+    renderCalendar();
 }
 
 // Add New Event
@@ -180,6 +190,7 @@ function deleteEvent(id) {
         
         saveEvents();
         renderEvents();
+        renderCalendar();
         console.log(`🗑️ Deleted event: ${event.name}`);
     }
 }
@@ -221,18 +232,22 @@ function renderEvents() {
     Object.values(countdownIntervals).forEach(clearInterval);
     countdownIntervals = {};
     
-    if (events.length === 0) {
+    const now = new Date();
+    
+    // Show only upcoming events
+    const upcomingEvents = events.filter(event => new Date(event.date) >= now);
+    
+    if (upcomingEvents.length === 0) {
         eventsContainer.innerHTML = '<p class="empty-state">No events yet. Add your first countdown above! 🎉</p>';
         return;
     }
     
-    // Sort events by date
-    const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Sort upcoming events by date
+    const sortedUpcoming = upcomingEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+    eventsContainer.innerHTML = sortedUpcoming.map(event => createEventCard(event)).join('');
     
-    eventsContainer.innerHTML = sortedEvents.map(event => createEventCard(event)).join('');
-    
-    // Start countdown for each event
-    sortedEvents.forEach(event => startCountdown(event.id));
+    // Start countdown for each upcoming event
+    sortedUpcoming.forEach(event => startCountdown(event.id));
 }
 
 // Create Event Card HTML
@@ -410,6 +425,90 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// Calendar Functions
+function renderCalendar() {
+    const year = currentCalendarMonth.getFullYear();
+    const month = currentCalendarMonth.getMonth();
+    
+    // Update month display
+    currentMonthElement.textContent = currentCalendarMonth.toLocaleString('en-US', { 
+        month: 'long', 
+        year: 'numeric' 
+    });
+    
+    // Get first day of month and number of days
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    
+    // Create calendar HTML
+    let calendarHTML = '<div class="calendar-header">';
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    dayNames.forEach(day => {
+        calendarHTML += `<div class="calendar-day-name">${day}</div>`;
+    });
+    calendarHTML += '</div><div class="calendar-days">';
+    
+    // Add empty cells for days before month starts
+    for (let i = 0; i < firstDay; i++) {
+        calendarHTML += '<div class="calendar-cell empty"></div>';
+    }
+    
+    // Add cells for each day of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+        const currentDate = new Date(year, month, day);
+        const isToday = currentDate.toDateString() === today.toDateString();
+        const isPast = currentDate < today && !isToday;
+        
+        // Get events for this day
+        const dayEvents = getEventsForDate(currentDate);
+        
+        let cellClass = 'calendar-cell';
+        if (isToday) cellClass += ' today';
+        if (isPast) cellClass += ' past';
+        if (dayEvents.length > 0) cellClass += ' has-events';
+        
+        calendarHTML += `
+            <div class="${cellClass}">
+                <div class="calendar-date">${day}</div>
+                ${dayEvents.length > 0 ? `
+                    <div class="calendar-events">
+                        ${dayEvents.map(event => `
+                            <div class="calendar-event" title="${escapeHtml(event.name)}">
+                                ${escapeHtml(event.name)}
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+    
+    calendarHTML += '</div>';
+    calendarElement.innerHTML = calendarHTML;
+}
+
+function getEventsForDate(date) {
+    const now = new Date();
+    return events.filter(event => {
+        const eventDate = new Date(event.date);
+        // Only show future events in calendar
+        return eventDate >= now && 
+               eventDate.getDate() === date.getDate() &&
+               eventDate.getMonth() === date.getMonth() &&
+               eventDate.getFullYear() === date.getFullYear();
+    });
+}
+
+function changeMonth(direction) {
+    currentCalendarMonth = new Date(
+        currentCalendarMonth.getFullYear(),
+        currentCalendarMonth.getMonth() + direction,
+        1
+    );
+    renderCalendar();
 }
 
 // Initialize when DOM is ready
