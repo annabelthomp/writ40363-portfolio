@@ -108,6 +108,8 @@
                 <h3>STCO Clubs and Organizations Brochure</h3>
                 <p>This project focused on creating a promotional brochure for two different professional organizations offered to Strategic Communication students. Using skills in Adobe InDesign, I was able to create a creative and organized brochure surrounding these professional clubs at TCU.</p>
                 <p><strong>Skills used:</strong> Adobe InDesign and Photoshop</p>
+                 <img src="images/Thompson Design.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
+                  <img src="images/Thompson Design2.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
             </div>
         </article>
         
@@ -116,6 +118,16 @@
                 <h3>Rare Beauty News Release </h3>
                 <p>For this writing assignment, I was instructed to write a news release for a company as if it were happening in the real world. Through the use of proper AP style, correct formatting, and spelling, I was able to create a compelling piece that draws attention to this brand.</p>
                 <p><strong>Skills used:</strong> Research, AP Style </p>
+                
+                <!-- PDF Viewer -->
+                <div class="pdf-viewer">
+                    <iframe id="pdf-frame" src="documents/Thompson-News-Release.pdf#page=1" type="application/pdf"></iframe>
+                    <div class="pdf-controls">
+                        <button onclick="previousPage()" class="pdf-btn" id="prev-btn">← Previous</button>
+                        <span id="page-info">Page <span id="current-page">1</span> of 2</span>
+                        <button onclick="nextPage()" class="pdf-btn" id="next-btn">Next →</button>
+                    </div>
+                </div>
             </div>
         </article>
 
@@ -124,6 +136,16 @@
                 <h3>CASA Feature Article </h3>
                 <p>For my Diversity course, I was asked to write a feature article that highlights the volunteer work of a Court Appointed Special Advocate (CASA) in Tarrant County, Texas. This article was written using AP style, correct formatting, and organization skills to effectively write a piece surrounding this nonprofit.</p>
                 <p><strong>Skills used:</strong> Organization Skills, AP Style </p>
+                
+                <!-- PDF Viewer -->
+                <div class="pdf-viewer">
+                    <iframe id="pdf-frame-casa" src="documents/Thompson-CASA-Feature-Article.pdf#page=1" type="application/pdf"></iframe>
+                    <div class="pdf-controls">
+                        <button onclick="previousPageCASA()" class="pdf-btn" id="prev-btn-casa">← Previous</button>
+                        <span id="page-info-casa">Page <span id="current-page-casa">1</span> of 3</span>
+                        <button onclick="nextPageCASA()" class="pdf-btn" id="next-btn-casa">Next →</button>
+                    </div>
+                </div>
             </div>
         </article>
 
@@ -178,6 +200,70 @@ function closeLightbox() {
     lightbox.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
+
+// PDF Navigation
+let currentPage = 1;
+const totalPages = 2;
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        updatePDF();
+    }
+}
+
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        updatePDF();
+    }
+}
+
+function updatePDF() {
+    const iframe = document.getElementById('pdf-frame');
+    const pdfPath = iframe.src.split('#')[0];
+    iframe.src = pdfPath + '#page=' + currentPage;
+    document.getElementById('current-page').textContent = currentPage;
+    
+    // Update button states
+    document.getElementById('prev-btn').disabled = currentPage === 1;
+    document.getElementById('next-btn').disabled = currentPage === totalPages;
+}
+
+// PDF Navigation for CASA Article
+let currentPageCASA = 1;
+const totalPagesCASA = 3;
+
+function nextPageCASA() {
+    if (currentPageCASA < totalPagesCASA) {
+        currentPageCASA++;
+        updatePDFCASA();
+    }
+}
+
+function previousPageCASA() {
+    if (currentPageCASA > 1) {
+        currentPageCASA--;
+        updatePDFCASA();
+    }
+}
+
+function updatePDFCASA() {
+    const iframe = document.getElementById('pdf-frame-casa');
+    const pdfPath = iframe.src.split('#')[0];
+    iframe.src = pdfPath + '#page=' + currentPageCASA;
+    document.getElementById('current-page-casa').textContent = currentPageCASA;
+    
+    // Update button states
+    document.getElementById('prev-btn-casa').disabled = currentPageCASA === 1;
+    document.getElementById('next-btn-casa').disabled = currentPageCASA === totalPagesCASA;
+}
+
+// Initialize button states on page load
+window.addEventListener('load', function() {
+    updatePDF();
+    updatePDFCASA();
+});
 </script>
 </body>
 </html>
