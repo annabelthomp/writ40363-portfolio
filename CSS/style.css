@@ -236,6 +236,32 @@ section{
 margin-bottom: 2rem; 
 }
 
+.project-category {
+  margin-bottom: 4rem;
+}
+
+.category-title {
+  font-size: 1.75rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: #667eea;
+  border-radius: 2px;
+}
+
 .projects-container {
   display: grid;
   grid-template-columns: 1fr;

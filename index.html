@@ -80,7 +80,7 @@
         <div class="skills-container">
             <div class="skill-card">
                 <h3>Web Development</h3>
-                <p>HTML, CSS, Python, WIX </p>
+                <p>HTML, CSS, Python, WIX, JavaScript</p>
             </div>
            
             <div class="skill-card">
@@ -104,89 +104,110 @@
 
 <section class="projects-section" id="projects">
     <h2>My Projects</h2>
-    <div class="projects-container">
-        <article class="project-card">
-            <div class="project-content">
-                <h3>STCO Study Abroad Promotional Material </h3>
-                <p>This project includes the creation of a promotional flyer, Instagram Ad, and Facebook Ad for TCU's Strategic Communication study abroad program in London. With the use of Adobe Photoshop, I was able to create clean and informational pieces to promote this opportunity. </p>
-                <p><strong>Skills used:</strong> Adobe InDesign and Photoshop </p>
-               <img src="images/flyer2.jpg" alt="Study Abroad Flyer" class="flyer-image" onclick="openLightbox(this)"> 
-            
-            </div>
-        </article>
-
-        <article class="project-card">
-            <div class="project-content">
-                <h3>STCO Clubs and Organizations Brochure</h3>
-                <p>This project focused on creating a promotional brochure for two different professional organizations offered to Strategic Communication students. Using skills in Adobe InDesign, I was able to create a creative and organized brochure surrounding these professional clubs at TCU.</p>
-                <p><strong>Skills used:</strong> Adobe InDesign and Photoshop</p>
-                 <img src="images/Thompson Design.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
-                  <img src="images/Thompson Design2.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
-            </div>
-        </article>
-
-        <article class="project-card">
-            <div class="project-content">
-                <h3>USPS National Campaign</h3>
-                <p>I contributed to the development of a national strategic communication campaign aimed at repositioning USPS as a creative, results-driven partner for small businesses. My responsibilities included conducting research on USPS to inform our strategic direction and creating engaging reels to support the campaign's digital presence. I also designed and refined the Canva slide deck, ensuring that the campaign's insight, objectives, and recommendations were presented clearly and professionally.</p>
-                <p><strong>Skills used:</strong> Presentation Skills, Research, Content Creation, Canva</p>
-            
-                <!-- PDF Viewer -->
-                <div class="pdf-viewer">
-                    <iframe id="pdf-frame-usps" src="documents/USPS-National-Campaign.pdf#page=1" type="application/pdf"></iframe>
-                    <div class="pdf-controls">
-                        <button onclick="previousPageUSPS()" class="pdf-btn" id="prev-btn-usps">← Previous</button>
-                        <span id="page-info-usps">Page <span id="current-page-usps">1</span> of 8</span>
-                        <button onclick="nextPageUSPS()" class="pdf-btn" id="next-btn-usps">Next →</button>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-         <article class="project-card">
-            <div class="project-content">
-                <h3>CASA Feature Article </h3>
-                <p>For my Diversity course, I was asked to write a feature article that highlights the volunteer work of a Court Appointed Special Advocate (CASA) in Tarrant County, Texas. This article was written using AP style, correct formatting, and organization skills to effectively write a piece surrounding this nonprofit.</p>
-                <p><strong>Skills used:</strong> Organization Skills, AP Style </p>
+    
+    <!-- Coursework Section -->
+    <div class="project-category">
+        <h3 class="category-title">Coursework</h3>
+        <div class="projects-container">
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>STCO Study Abroad Promotional Material </h3>
+                    <p>This project includes the creation of a promotional flyer, Instagram Ad, and Facebook Ad for TCU's Strategic Communication study abroad program in London. With the use of Adobe Photoshop, I was able to create clean and informational pieces to promote this opportunity. </p>
+                    <p><strong>Skills used:</strong> Adobe InDesign and Photoshop </p>
+                   <img src="images/flyer2.jpg" alt="Study Abroad Flyer" class="flyer-image" onclick="openLightbox(this)"> 
                 
-                <!-- PDF Viewer -->
-                <div class="pdf-viewer">
-                    <iframe id="pdf-frame-casa" src="documents/Thompson-CASA-Feature-Article.pdf#page=1" type="application/pdf"></iframe>
-                    <div class="pdf-controls">
-                        <button onclick="previousPageCASA()" class="pdf-btn" id="prev-btn-casa">← Previous</button>
-                        <span id="page-info-casa">Page <span id="current-page-casa">1</span> of 3</span>
-                        <button onclick="nextPageCASA()" class="pdf-btn" id="next-btn-casa">Next →</button>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>STCO Clubs and Organizations Brochure</h3>
+                    <p>This project focused on creating a promotional brochure for two different professional organizations offered to Strategic Communication students. Using skills in Adobe InDesign, I was able to create a creative and organized brochure surrounding these professional clubs at TCU.</p>
+                    <p><strong>Skills used:</strong> Adobe InDesign and Photoshop</p>
+                     <img src="images/Thompson Design.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
+                      <img src="images/Thompson Design2.jpg" alt="Thompson Design Brochure" class="brochure" onclick="openLightbox(this)"> 
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>USPS National Campaign</h3>
+                    <p>I contributed to the development of a national strategic communication campaign aimed at repositioning USPS as a creative, results-driven partner for small businesses. My responsibilities included conducting research on USPS to inform our strategic direction and creating engaging reels to support the campaign's digital presence. I also designed and refined the Canva slide deck, ensuring that the campaign's insight, objectives, and recommendations were presented clearly and professionally.</p>
+                    <p><strong>Skills used:</strong> Presentation Skills, Research, Content Creation, Canva</p>
+                
+                    <!-- PDF Viewer -->
+                    <div class="pdf-viewer">
+                        <iframe id="pdf-frame-usps" src="documents/USPS-National-Campaign.pdf#page=1" type="application/pdf"></iframe>
+                        <div class="pdf-controls">
+                            <button onclick="previousPageUSPS()" class="pdf-btn" id="prev-btn-usps">← Previous</button>
+                            <span id="page-info-usps">Page <span id="current-page-usps">1</span> of 8</span>
+                            <button onclick="nextPageUSPS()" class="pdf-btn" id="next-btn-usps">Next →</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
 
-          <article class="project-card">
-            <div class="project-content">
-                <h3>Daily Tracker </h3>
-                <p>For this project, I created a web application allowing users to track the weather, their tasks, as well as providing an inspirational quote of the day. The app includes features such as user authentication, data visualization, and the ability to save their favorite quotes.</p>
-                <p><strong>Skills used:</strong> HTML, CSS, JavaScript, API Integration </p>
-                <p><a href="https://annabelthomp.github.io/project3-dashboard/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
-            </div>
-        </article>
+             <article class="project-card">
+                <div class="project-content">
+                    <h3>CASA Feature Article </h3>
+                    <p>For my Diversity course, I was asked to write a feature article that highlights the volunteer work of a Court Appointed Special Advocate (CASA) in Tarrant County, Texas. This article was written using AP style, correct formatting, and organization skills to effectively write a piece surrounding this nonprofit.</p>
+                    <p><strong>Skills used:</strong> Organization Skills, AP Style </p>
+                    
+                    <!-- PDF Viewer -->
+                    <div class="pdf-viewer">
+                        <iframe id="pdf-frame-casa" src="documents/Thompson-CASA-Feature-Article.pdf#page=1" type="application/pdf"></iframe>
+                        <div class="pdf-controls">
+                            <button onclick="previousPageCASA()" class="pdf-btn" id="prev-btn-casa">← Previous</button>
+                            <span id="page-info-casa">Page <span id="current-page-casa">1</span> of 3</span>
+                            <button onclick="nextPageCASA()" class="pdf-btn" id="next-btn-casa">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
 
-              <article class="project-card">
-            <div class="project-content">
-                <h3>Local Favorites Tracker </h3>
-                <p>For this project, I created a web application allowing users to track their favorite local restaurants, shops, and more. The app includes features such as user reviews, ratings, and the ability to save favorite locations.</p>
-                <p><strong>Skills used:</strong> HTML, CSS, JavaScript, API Integration </p>
-                <p><a href="https://annabelthomp.github.io/40363-local-favorites-tracker/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
-            </div>
-        </article>
+    <!-- Coding Work Section -->
+    <div class="project-category">
+        <h3 class="category-title">Coding Work</h3>
+        <div class="projects-container">
+                <article class="project-card">
+                <div class="project-content">
+                    <h3>Original Portfolio Design</h3>
+                    <p>This project focused on creating a portfolio website to showcase my work and skills. This was the first version of my portfolio, highlighting my design and development abilities. This original design transformed into what you see today. </p>
+                    <p><strong>Skills used:</strong> HTML, CSS, Responsive Design </p>
+                    <img src="images/Screenshot 2025-12-08 at 9.11.17 PM.jpg" alt="Thompson Original Portfolio" class="brochure" onclick="openLightbox(this)"> 
+                     <img src="images/Screenshot 2025-12-08 at 9.10.57 PM.jpg" alt="Thompson Original Portfolio" class="brochure" onclick="openLightbox(this)"> 
+                </div>
+            </article>
 
-        <article class="project-card">
-            <div class="project-content">
-                <h3>Project Zed</h3>
-                <p>This project is an AI-powered event countdown timer with an integrated calendar. Users can track upcoming events, view countdowns in real-time, and manage their schedule with an intuitive calendar interface. The application demonstrates the integration of AI technology with practical time management features.</p>
-                <p><strong>Skills used:</strong> HTML, CSS, JavaScript, AI Integration</p>
-                <p><a href="https://annabelthomp.github.io/project-zed4/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
-            </div>
-        </article>
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Daily Tracker </h3>
+                    <p>For this project, I created a web application allowing users to track the weather, their tasks, as well as providing an inspirational quote of the day. The app includes features such as user authentication, data visualization, and the ability to save their favorite quotes.</p>
+                    <p><strong>Skills used:</strong> HTML, CSS, JavaScript, localStorage </p>
+                    <p><a href="https://annabelthomp.github.io/project3-dashboard/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Local Favorites Tracker </h3>
+                    <p>For this project, I created a web application allowing users to track their favorite local restaurants, shops, and more. The app includes features such as user reviews, ratings, and the ability to save favorite locations.</p>
+                    <p><strong>Skills used:</strong> HTML, CSS, JavaScript, API Integration, JSON </p>
+                    <p><a href="https://annabelthomp.github.io/40363-local-favorites-tracker/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Project Zed</h3>
+                    <p>This project is an AI-powered event countdown timer with an integrated calendar. Users can track upcoming events, view countdowns in real-time, and manage their schedule with an intuitive calendar interface. The application demonstrates the integration of AI technology with practical time management features.</p>
+                    <p><strong>Skills used:</strong> HTML, CSS, JavaScript, AI Integration</p>
+                    <p><a href="https://annabelthomp.github.io/project-zed4/" target="_blank" class="btn btn-primary">Click here to access the app!</a></p>
+                </div>
+            </article>
+        </div>
     </div>
 
 </section>
