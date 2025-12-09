@@ -24,7 +24,7 @@ Individual course projects are preserved in the `projects/` directory:
 - **[Project 1: Personal Portfolio](projects/project1-original/)** - Original portfolio submission featuring HTML and CSS fundamentals
 - **[Project 2: Local Favorites Tracker](projects/project2-tracker/)** - Interactive application using JavaScript, DOM manipulation, and localStorage
 - **[Project 3: Personal Data Dashboard](projects/project3-dashboard/)** - Personal dashboard featuring weather forecasts, daily quotes, and task management
-
+- **[Project 4: Project Zed](projects/project4-zed/)** - Original AI event countdown featuring event calendar and localStorage
 ## Technologies Used
 
 - HTML5
@@ -32,6 +32,7 @@ Individual course projects are preserved in the `projects/` directory:
 - JavaScript (ES6+)
 - Git & GitHub
 - GitHub Pages
+- AI
 
 ## Development Tools
 
